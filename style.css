@@ -1,0 +1,17 @@
+.square {
+  float: left;
+  width: 30%;
+  height: 0;
+  padding-bottom: 30%;
+  background: burlywood;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+body {
+  background: #232323;
+}
