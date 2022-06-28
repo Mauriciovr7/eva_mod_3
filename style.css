@@ -43,16 +43,21 @@ h1 {
 }
 #reset {
   background: rgb(243, 156, 18);
-  border: 1px solid blue;
-  
+  border: 1px solid blue;  
 }
 #mensaje {
-
   text-align:center;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center;  
 }
+
+@keyframes fadeOut {
+  0% {opacity: 1;}
+  100% {opacity: 0;}
+}
+/* si deseo desaparecer un elemento, le agrego la siguiente clase */
 .desaparecer {
-  animation: fadeOut ease 5s;
+  animation-name: fadeOut;
+  animation-duration: 4s;
+  animation-fill-mode: both;
 }
