@@ -22,9 +22,7 @@ let clickedColor = undefined;// color seleccionado por usuario//
 
 // Funcion para retornar color aleatorio
 function pickColor() {
-  const picked = Math.floor(Math.random() * colors.length); //número de posición del color//
-  //console.log (pickedColor)
-  return picked;
+  return colors[Math.floor(Math.random() * colors.length)]; //número de posición del color//
 }
 
 // Función para generar un color RGB aleatorio
@@ -43,21 +41,10 @@ function generateRandomColors(n) { // n = 6(hard) ó 3(easy) cuadros *****
 
 // Funcion cambio color
 function changeColors(color) {
-  for (let i = 0; i < cuadrados.length; i++) {
-    span_message.textContent = win; // ganador ***
-    btn_reset.textContent = 'Play Again?'
-    btn_reset.addEventListener('click', function () {
-      btn_reset.textContent = 'Nuevos Colores'
-      span_message.textContent = ''
-      x= undefined
-    });
-    cuadrados[i].style['background-color'] = color; //parámetro color ganador//
-    titulo.style['color'] = color;
-    span_color.textContent = color;
+  for (let cuadrado of cuadrados) {
+    cuadrado.style['background-color'] = color;
   }
-  msg_voz.text = win
-  window.speechSynthesis.speak(msg_voz)
-} 
+}
 
 
 // jugar
@@ -67,16 +54,19 @@ for (let i = 0; i < cuadrados.length; i++) {
     clickedColor = cuadrados[i].style['background-color'];
     if (pickedColor == clickedColor) { //condición para ganar//
       span_message.textContent = win; // ganador ***
-     
-      changeColors(clickedColor); // gana
-    } else {
-      span_message.textContent = win;
       msg_voz.text = win;
-      window.speechSynthesis.speak(msg_voz);
-      titulo.style['color'] = clickedColor;
+      titulo.style.color = clickedColor;
       span_color.textContent = clickedColor;
       btn_reset.textContent = "Play Again?";
+      window.speechSynthesis.speak(msg_voz);
       changeColors(clickedColor); // gana
+    } else {
+      cuadrados[i].style['visibility'] = 'hidden';
+      span_message.textContent = lost;
+      msg_voz.text = lost;
+      window.speechSynthesis.speak(msg_voz);
+      titulo.style['color'] = 'white';
+      span_color.textContent = "";
     }
   });
 }
@@ -97,10 +87,10 @@ btn_reset.addEventListener('click', function () {
 
 // Evento click del boton easy para cuando se quiera jugar en modo fácil (3 cuadrados)
 btn_easy.addEventListener('click', function () {
-  numSquares = 3;
+  cant_cuadrados = 3;
   btn_easy.classList.add('selected')
   btn_hard.classList.remove('selected')
-  colors = generateRandomColors(numSquares);
+  colors = generateRandomColors(cant_cuadrados);
   pickedColor = pickColor(colors);
   for (let i = 0; i < cuadrados.length; i++) {
     if (colors[i]) {
@@ -113,10 +103,10 @@ btn_easy.addEventListener('click', function () {
 
 // Evento click del boton hard para cuando se quiera jugar en modo fácil (6 cuadrados)
 btn_hard.addEventListener('click', function () {
-  numSquares = 6;
+  cant_cuadrados = 6;
   btn_hard.classList.add('selected')
   btn_easy.classList.remove('selected')
-  colors = generateRandomColors(numSquares);
+  colors = generateRandomColors(cant_cuadrados);
   pickedColor = pickColor(colors);
   for (let i = 0; i < cuadrados.length; i++) {
     cuadrados[i].style['background-color'] = colors[i];
