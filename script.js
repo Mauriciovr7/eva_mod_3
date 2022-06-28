@@ -61,6 +61,41 @@ for (let i = 0; i < cuadrados.length; i++) {
       window.speechSynthesis.speak(msg_voz);
       changeColors(clickedColor); // gana
     } else {
+    
+    /*   function detener(){
+        clearInterval(intervalo);
+        //restablecemos valores
+        valor = 100;
+        decremento = true;
+      }
+      intervalo = setInterval(function(){
+        if (decremento){
+          valor--;
+        }
+        else {
+          valor++;
+        }
+      //al dividir por 100 obtenemos los decimales que toma la funcion opacity
+		const valor = 100
+    const decremento = true;
+        cuadrados[i].style.opacity = valor / 100;
+		
+		if (valor == 50) {
+			if (cuadrados[i].style.background == "blue"){
+				cuadrados[i].style.background = "red";
+			}
+			else{
+        cuadrados[i].style.background = "blue";
+			}
+			decremento = false;
+		}
+		
+		else if (valor == 100 && !decremento){
+			detener()
+		}
+   }) */
+	
+
       cuadrados[i].style['visibility'] = 'hidden';
       span_message.textContent = lost;
       msg_voz.text = lost;
