@@ -9,6 +9,7 @@ body {
   padding-bottom: 30%;
   background: burlywood;
   margin: 0.5rem;
+  border-radius: 5%;
 }
 
 .container {
@@ -24,12 +25,14 @@ h1 {
 
 #message {
   color: black;
+  font-weight: bold;
 }
 
 #stripe {
   background: white;
   height: 30px;
   text-align: center;
+  padding: 0.8rem;
 }
 
 .selected {
