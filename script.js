@@ -61,42 +61,46 @@ for (let i = 0; i < cuadrados.length; i++) {
       window.speechSynthesis.speak(msg_voz);
       changeColors(clickedColor); // gana
     } else {
-    
-    /*   function detener(){
+
+
+      let decremento = true;
+      let valor = 100
+      // transicion
+      function detener() {
         clearInterval(intervalo);
         //restablecemos valores
         valor = 100;
         decremento = true;
       }
-      intervalo = setInterval(function(){
-        if (decremento){
+
+      intervalo = setInterval(function () {
+        if (decremento) {
           valor--;
+
         }
         else {
           valor++;
         }
-      //al dividir por 100 obtenemos los decimales que toma la funcion opacity
-		const valor = 100
-    const decremento = true;
-        cuadrados[i].style.opacity = valor / 100;
-		
-		if (valor == 50) {
-			if (cuadrados[i].style.background == "blue"){
-				cuadrados[i].style.background = "red";
-			}
-			else{
-        cuadrados[i].style.background = "blue";
-			}
-			decremento = false;
-		}
-		
-		else if (valor == 100 && !decremento){
-			detener()
-		}
-   }) */
-	
+        //al dividir por 100 obtenemos los decimales que toma la funcion opacity
 
-      cuadrados[i].style['visibility'] = 'hidden';
+        decremento = true;
+        cuadrados[i].style.opacity = valor / 100;
+
+        if (valor == 50) {
+          cuadrados[i].style['visibility'] = 'hidden';
+          // cuadrados[i].classList.remove()
+
+          decremento = false;
+        }
+
+        else if (valor == 100 && !decremento) {
+          detener()
+        }
+      }, 3)
+
+
+      // cuadrados[i].style['visibility'] = 'hidden'; // classlist remove
+
       span_message.textContent = lost;
       msg_voz.text = lost;
       window.speechSynthesis.speak(msg_voz);
@@ -115,8 +119,11 @@ btn_reset.addEventListener('click', function () {
   colors = generateRandomColors(cant_cuadrados);
   pickedColor = pickColor(colors);
   for (let i = 0; i < cuadrados.length; i++) {
-    cuadrados[i].style['visibility'] = 'visible';
     cuadrados[i].style['background-color'] = colors[i];
+    
+    cuadrados[i].style['visibility'] = 'visible'; // visible ***
+    console.log(cuadrados[i])
+
   }
 });
 
