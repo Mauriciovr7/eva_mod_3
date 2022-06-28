@@ -26,6 +26,7 @@ h1 {
 #message {
   color: black;
   font-weight: bold;
+  text-align: center;
 }
 
 #stripe {
@@ -36,5 +37,20 @@ h1 {
 }
 
 .selected {
-  background: silver;
+  background: rgb(241, 196, 15);
+  border-radius: 3rem;
+  border: 1px solid red;
+}
+#reset {
+  background: rgb(243, 156, 18);
+  border: 1px solid blue;
+  
+}
+#mensaje {
+  width: 3rem;
+  text-align:center;
+  margin-left:initial;
+  justify-content: center;
+  align-items: center;
+  
 }
